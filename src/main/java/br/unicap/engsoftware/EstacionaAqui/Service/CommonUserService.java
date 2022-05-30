@@ -31,6 +31,31 @@ public class CommonUserService {
         }
         throw new ResourceAlreadyExistsException(commonUser.getCpf());
     }
+
+    public void deleteCommonUser(String id) {
+        if (commonUserRepository.existsById(id)){
+            commonUserRepository.deleteById(id);
+            return;
+        }
+        throw new ResourceNotFoundException(id);
+    }
+
+    public CommonUser updateCommonUser(String id, CommonUser newCommonUser) {
+        Optional<CommonUser> commonUser = commonUserRepository.findById(id);
+        if (commonUser.isPresent()){
+            return updateData(commonUser.get(),newCommonUser);
+        }
+        throw new ResourceNotFoundException(id);
+    }
+
+    private CommonUser updateData(CommonUser commonUser, CommonUser newCommonUser) { // todo builder()
+        commonUser.setEmail(newCommonUser.getEmail());
+        commonUser.setBirthDate(newCommonUser.getBirthDate());
+        commonUser.setIdAuth(newCommonUser.getIdAuth());
+        commonUser.setName(newCommonUser.getName());
+        commonUser.setPhone(newCommonUser.getPhone());
+        return commonUserRepository.save(commonUser);
+    }
 }
 
 

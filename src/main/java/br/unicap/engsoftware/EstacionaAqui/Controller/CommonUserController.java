@@ -36,4 +36,16 @@ public class CommonUserController {
         return ResponseEntity.created(uri).body(commonUser);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<CommonUser> deleteCommonUser(@PathVariable String id) {
+        commonUserService.deleteCommonUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CommonUser> updateCommonUser(@PathVariable String id, @RequestBody CommonUser commonUserBody) {
+        return ResponseEntity.ok().body(commonUserService.updateCommonUser(id, commonUserBody));
+    }
+
+
 }

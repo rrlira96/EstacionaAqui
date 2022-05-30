@@ -31,6 +31,32 @@ public class ServiceProviderUserService {
         }
         throw new ResourceAlreadyExistsException(serviceProviderUser.getCnpj());
     }
+
+    public void deleteServiceProviderUser(String id) {
+        if (serviceProviderUserRepository.existsById(id)) {
+            serviceProviderUserRepository.deleteById(id);
+            return;
+        }
+        throw new ResourceNotFoundException(id);
+    }
+
+    public ServiceProviderUser updateServiceProviderUser(String id, ServiceProviderUser newServiceProviderUser) {
+        Optional<ServiceProviderUser> serviceProviderUser = serviceProviderUserRepository.findById(id);
+        if (serviceProviderUser.isPresent()) {
+            return updateData(serviceProviderUser.get(), newServiceProviderUser);
+        }
+        throw new ResourceNotFoundException(id);
+    }
+
+    private ServiceProviderUser updateData(ServiceProviderUser serviceProviderUser, ServiceProviderUser newServiceProviderUser) { // todo builder()
+        serviceProviderUser.setBirthDate(newServiceProviderUser.getBirthDate());
+        serviceProviderUser.setEmail(newServiceProviderUser.getEmail());
+        serviceProviderUser.setIdAuth(newServiceProviderUser.getIdAuth());
+        serviceProviderUser.setName(newServiceProviderUser.getName());
+        serviceProviderUser.setPhone(newServiceProviderUser.getPhone());
+        return serviceProviderUserRepository.save(serviceProviderUser);
+    }
+
 }
 
 
