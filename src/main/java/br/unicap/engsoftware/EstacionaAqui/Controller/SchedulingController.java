@@ -1,7 +1,7 @@
 package br.unicap.engsoftware.EstacionaAqui.Controller;
 
-import br.unicap.engsoftware.EstacionaAqui.Entities.Parking;
-import br.unicap.engsoftware.EstacionaAqui.Service.ParkingService;
+import br.unicap.engsoftware.EstacionaAqui.Entities.Scheduling;
+import br.unicap.engsoftware.EstacionaAqui.Service.SchedulingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,42 +12,41 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/parkingLots")
-public class ParkingController {
+@RequestMapping(value = "/schedules")
+public class SchedulingController {
 
     @Autowired
-    private ParkingService parkingService;
+    private SchedulingService schedulingService;
 
     @GetMapping
-    public ResponseEntity<List<Parking>> getAllParkingLots() {
-        return ResponseEntity.ok().body(parkingService.getAllParkingLots());
+    public ResponseEntity<List<Scheduling>> getAllSchedules() {
+        return ResponseEntity.ok().body(schedulingService.getAllSchedules());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Parking> getParkingById(@PathVariable int id) {
-        return ResponseEntity.ok().body(parkingService.getParkingById(id));
+    public ResponseEntity<Scheduling> getSchedulesById(@PathVariable int id) {
+        return ResponseEntity.ok().body(schedulingService.getSchedulesById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Parking> addParking(@Valid @RequestBody Parking obj) {
-        Parking parking = parkingService.createParking(obj);
+    public ResponseEntity<Scheduling> addScheduling(@Valid @RequestBody Scheduling obj) {
+        Scheduling scheduling = schedulingService.createScheduling(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(parking.getId()).toUri();
-        return ResponseEntity.created(uri).body(parking);
+                .buildAndExpand(scheduling.getId()).toUri();
+        return ResponseEntity.created(uri).body(scheduling);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Parking> deleteParking(@PathVariable int id) {
-        parkingService.deleteParking(id);
+    public ResponseEntity<Scheduling> deleteScheduling(@PathVariable int id) {
+        schedulingService.deleteScheduling(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Parking> updateParking(@PathVariable int id, @RequestBody Parking parking) {
-        return ResponseEntity.ok().body(parkingService.updateParking(id, parking));
+    public ResponseEntity<Scheduling> updateScheduling(@PathVariable int id, @RequestBody Scheduling scheduling) {
+        return ResponseEntity.ok().body(schedulingService.updateScheduling(id, scheduling));
     }
-
 
 
 }

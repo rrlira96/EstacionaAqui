@@ -1,53 +1,52 @@
 package br.unicap.engsoftware.EstacionaAqui.Entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "estacionamento")
 public class Parking {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id")
+    @GeneratedValue
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "Cep")
+    @Column(name = "cep")
+    @NotNull
     private String cep;
 
-    @Column(name = "Nome")
+    @Column(name = "nome")
+    @NotNull
     private String name;
 
-    @Column(name = "QtdVagasDisponiveis")
+    @Column(name = "qtd_vagas_disponiveis")
+    @Min(value = 0, message = "Parking spot quantity must not be less than 0")
     private int parkingSpotQuantity;
 
-    @Column(name = "QtdVagasTotal")
+    @Column(name = "qtd_vagas_total")
+    @Min(value = 0, message = "Total parking spot quantity must not be less than 0")
     private int totalParkingSpot;
 
-    @Column(name = "Telefone")
+    @Column(name = "telefone")
     private String phone;
 
-    @ManyToOne
-    private ServiceProviderUser serviceProviderUser;
+    @Column(name = "email")
+    @NotNull
+    private String email;
 
     public Parking() {
     }
 
-    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, ServiceProviderUser serviceProviderUser) {
+    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String email) {
         this.id = id;
         this.cep = cep;
         this.name = name;
         this.parkingSpotQuantity = parkingSpotQuantity;
         this.totalParkingSpot = totalParkingSpot;
         this.phone = phone;
-        this.serviceProviderUser = serviceProviderUser;
-    }
-
-    public ServiceProviderUser getServiceProviderUser() {
-        return serviceProviderUser;
-    }
-
-    public void setServiceProviderUser(ServiceProviderUser serviceProviderUser) {
-        this.serviceProviderUser = serviceProviderUser;
+        this.email = email;
     }
 
     public int getId() {
@@ -98,4 +97,11 @@ public class Parking {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

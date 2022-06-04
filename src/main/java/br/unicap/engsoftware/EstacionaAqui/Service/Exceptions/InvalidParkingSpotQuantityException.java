@@ -1,7 +1,7 @@
 package br.unicap.engsoftware.EstacionaAqui.Service.Exceptions;
 
-public class ResourceNotFoundException extends RuntimeException {
-    public ResourceNotFoundException(String id){
-        super("Resource not found - id: "+id);
+public class InvalidParkingSpotQuantityException extends RuntimeException {
+    public InvalidParkingSpotQuantityException(){
+        super("Parking spot quantity must be less than total quantity spot");
     }
 }
