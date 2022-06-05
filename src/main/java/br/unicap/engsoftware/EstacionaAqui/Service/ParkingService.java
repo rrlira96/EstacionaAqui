@@ -53,12 +53,14 @@ public class ParkingService {
     }
 
     private Parking updateData(Parking parking, Parking newParking) {
-        parking.setEmail(newParking.getEmail());
+        parking.setOwnerEmail(newParking.getOwnerEmail());
         parking.setCep(newParking.getCep());
         parking.setName(newParking.getName());
         parking.setParkingSpotQuantity(newParking.getParkingSpotQuantity());
         parking.setTotalParkingSpot(newParking.getTotalParkingSpot());
         parking.setPhone(newParking.getPhone());
+        parking.setLatitude(newParking.getLatitude());
+        parking.setLongitude(newParking.getLongitude());
         return parkingRepository.save(parking);
     }
 }

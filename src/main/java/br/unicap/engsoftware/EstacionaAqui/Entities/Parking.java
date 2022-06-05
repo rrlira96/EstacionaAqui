@@ -32,21 +32,30 @@ public class Parking {
     @Column(name = "telefone")
     private String phone;
 
-    @Column(name = "email")
+    @Column(name = "email_dono")
     @NotNull
-    private String email;
+    private String ownerEmail;
+
+    @Column(name = "latitude")
+    private String latitude;
+
+    @Column(name = "longitude")
+    private String longitude;
+
 
     public Parking() {
     }
 
-    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String email) {
+    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String ownerEmail, String latitude, String longitude) {
         this.id = id;
         this.cep = cep;
         this.name = name;
         this.parkingSpotQuantity = parkingSpotQuantity;
         this.totalParkingSpot = totalParkingSpot;
         this.phone = phone;
-        this.email = email;
+        this.ownerEmail = ownerEmail;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getId() {
@@ -97,11 +106,27 @@ public class Parking {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getOwnerEmail() {
+        return ownerEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setOwnerEmail(String owner_email) {
+        this.ownerEmail = owner_email;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }
