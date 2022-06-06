@@ -61,6 +61,7 @@ public class ParkingService {
         parking.setPhone(newParking.getPhone());
         parking.setLatitude(newParking.getLatitude());
         parking.setLongitude(newParking.getLongitude());
+        parking.setAddress(newParking.getAddress());
         return parkingRepository.save(parking);
     }
 }

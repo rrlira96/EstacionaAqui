@@ -42,11 +42,14 @@ public class Parking {
     @Column(name = "longitude")
     private String longitude;
 
+    @Column(name = "endereco")
+    private String address;
+
 
     public Parking() {
     }
 
-    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String ownerEmail, String latitude, String longitude) {
+    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String ownerEmail, String latitude, String longitude, String address) {
         this.id = id;
         this.cep = cep;
         this.name = name;
@@ -56,6 +59,7 @@ public class Parking {
         this.ownerEmail = ownerEmail;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
     public int getId() {
@@ -128,5 +132,13 @@ public class Parking {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
