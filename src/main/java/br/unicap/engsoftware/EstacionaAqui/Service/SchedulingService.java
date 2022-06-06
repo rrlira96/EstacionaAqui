@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionSystemException;
 
-import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +67,7 @@ public class SchedulingService {
     private Scheduling updateData(Scheduling scheduling, Scheduling newScheduling) {
         scheduling.setEmail(newScheduling.getEmail());
         scheduling.setParking(newScheduling.getParking());
+        scheduling.setBookingDate(newScheduling.getBookingDate());
         return schedulingRepository.save(scheduling);
     }
 }

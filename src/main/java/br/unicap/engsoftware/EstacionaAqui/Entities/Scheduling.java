@@ -2,6 +2,7 @@ package br.unicap.engsoftware.EstacionaAqui.Entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @Table(name = "agendamento")
@@ -20,13 +21,18 @@ public class Scheduling {
     @ManyToOne(optional = false)
     private Parking parking;
 
+    @Column(name = "data_reserva")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date bookingDate;
+
     public Scheduling() {
     }
 
-    public Scheduling(int id, String email, Parking parking) {
+    public Scheduling(int id, String email, Parking parking, Date bookingDate) {
         this.id = id;
         this.email = email;
         this.parking = parking;
+        this.bookingDate = bookingDate;
     }
 
     public int getId() {
@@ -51,5 +57,13 @@ public class Scheduling {
 
     public void setParking(Parking parking) {
         this.parking = parking;
+    }
+
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
     }
 }
