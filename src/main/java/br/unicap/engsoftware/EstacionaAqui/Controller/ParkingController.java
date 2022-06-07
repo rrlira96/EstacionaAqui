@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/parkingLots")
@@ -19,8 +20,8 @@ public class ParkingController {
     private ParkingService parkingService;
 
     @GetMapping
-    public ResponseEntity<List<Parking>> getAllParkingLots() {
-        return ResponseEntity.ok().body(parkingService.getAllParkingLots());
+    public ResponseEntity<List<Parking>> getAllParkingLots(@RequestParam Optional<String> ownerEmail) {
+        return ResponseEntity.ok().body(ownerEmail.isPresent() ? parkingService.getAllParkingLotsByOwner(ownerEmail.get()) : parkingService.getAllParkingLots());
     }
 
     @GetMapping("/{id}")
