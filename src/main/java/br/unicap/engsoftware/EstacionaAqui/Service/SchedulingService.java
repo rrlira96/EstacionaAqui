@@ -53,11 +53,18 @@ public class SchedulingService {
     }
 
     public void deleteScheduling(int id) {
-        if (schedulingRepository.existsById(id)) {
+        Optional<Scheduling> scheduling = schedulingRepository.findById(id);
+        if (scheduling.isPresent()) {
             schedulingRepository.deleteById(id);
+            freeParkingSpot(scheduling.get().getParking());
             return;
         }
         throw new ResourceNotFoundException(String.valueOf(id));
+    }
+
+    private void freeParkingSpot(Parking parking) {
+        parking.setParkingSpotQuantity(parking.getParkingSpotQuantity() + 1);
+        parkingRepository.save(parking);
     }
 
     public Scheduling updateScheduling(int id, Scheduling newScheduling) {
