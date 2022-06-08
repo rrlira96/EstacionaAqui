@@ -10,6 +10,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/schedules")
@@ -19,8 +20,8 @@ public class SchedulingController {
     private SchedulingService schedulingService;
 
     @GetMapping
-    public ResponseEntity<List<Scheduling>> getAllSchedules() {
-        return ResponseEntity.ok().body(schedulingService.getAllSchedules());
+    public ResponseEntity<List<Scheduling>> getAllSchedules(@RequestParam Optional<String> email) {
+        return ResponseEntity.ok().body(email.isPresent() ? schedulingService.getAllSchedulesByEmail(email.get()) : schedulingService.getAllSchedules());
     }
 
     @GetMapping("/{id}")

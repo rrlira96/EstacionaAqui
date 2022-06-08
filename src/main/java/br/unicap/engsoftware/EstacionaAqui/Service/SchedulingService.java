@@ -27,6 +27,10 @@ public class SchedulingService {
         return schedulingRepository.findAll();
     }
 
+    public List<Scheduling> getAllSchedulesByEmail(String email) {
+        return schedulingRepository.findAllByEmail(email);
+    }
+
     public Scheduling getSchedulesById(int id) {
         Optional<Scheduling> scheduling = schedulingRepository.findById(id);
         return scheduling.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(id)));
