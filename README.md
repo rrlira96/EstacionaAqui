@@ -10,3 +10,5 @@ It has 2 entities
   * Scheduling
 
 It his hosted in a Heroku application.
+
+The develop branch it is the local/test environment, while the master its the production env that is hosted on Heroku.
