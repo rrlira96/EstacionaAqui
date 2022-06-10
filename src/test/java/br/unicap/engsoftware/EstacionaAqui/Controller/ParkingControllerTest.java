@@ -68,21 +68,4 @@ public class ParkingControllerTest {
                 .andExpect(jsonPath("$.name", is("Parking Test0")));
     }
 
-//    @Test
-//    public void createParkingTest() throws Exception {
-//        Parking newParking = new Parking(5, "52061-200", "New Parking", 80, 100, "88888888", "test@email", "-8.55555", "+4.8888", "Street X");
-//
-//        Mockito.when(parkingService.createParking(newParking)).thenReturn(newParking);
-//
-//        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/parkingLots")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON)
-//                .content(this.objectMapper.writeValueAsString(newParking));
-//
-//        mockMvc.perform(mockRequest)
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$", notNullValue()))
-//                .andExpect(jsonPath("$.name", is("New Parking")));
-//    }
-
 }

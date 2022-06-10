@@ -25,7 +25,6 @@ public class ParkingService {
         return parkingRepository.findAllByOwnerEmail(ownerEmail);
     }
 
-
     public Parking getParkingById(int id) {
         Optional<Parking> parking = parkingRepository.findById(id);
         return parking.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(id)));
