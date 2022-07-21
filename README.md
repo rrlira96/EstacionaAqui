@@ -15,7 +15,7 @@ The develop branch it is the local/test environment, while the master its the pr
 
 ## To run the app
 
-First you need to build the docker image:
+First you need to build the docker image, go to the root folder of the project and run:
 
 `docker build -t estaciona-aqui:latest .`
 
