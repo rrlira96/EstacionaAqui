@@ -37,9 +37,9 @@ public class ParkingRepositoryTest {
 
         Assert.assertNotNull(savedParking);
         Assert.assertEquals(parking.getAddress(), savedParking.getAddress());
-        Assert.assertEquals(parking.getParkingSpotQuantity(), savedParking.getParkingSpotQuantity());
+        Assert.assertEquals(parking.getAvailableParkingSpots(), savedParking.getAvailableParkingSpots());
         Assert.assertEquals(parking.getTotalParkingSpot(), savedParking.getTotalParkingSpot());
-        Assert.assertEquals(parking.getCep(), savedParking.getCep());
+        Assert.assertEquals(parking.getZipCode(), savedParking.getZipCode());
         Assert.assertEquals(parking.getLatitude(), savedParking.getLatitude());
         Assert.assertEquals(parking.getLongitude(), savedParking.getLongitude());
         Assert.assertEquals(parking.getName(), savedParking.getName());
@@ -56,9 +56,9 @@ public class ParkingRepositoryTest {
 
         Assert.assertNotNull(parkingReceived);
         Assert.assertEquals(parking.getAddress(), parkingReceived.getAddress());
-        Assert.assertEquals(parking.getParkingSpotQuantity(), parkingReceived.getParkingSpotQuantity());
+        Assert.assertEquals(parking.getAvailableParkingSpots(), parkingReceived.getAvailableParkingSpots());
         Assert.assertEquals(parking.getTotalParkingSpot(), parkingReceived.getTotalParkingSpot());
-        Assert.assertEquals(parking.getCep(), parkingReceived.getCep());
+        Assert.assertEquals(parking.getZipCode(), parkingReceived.getZipCode());
         Assert.assertEquals(parking.getLatitude(), parkingReceived.getLatitude());
         Assert.assertEquals(parking.getLongitude(), parkingReceived.getLongitude());
         Assert.assertEquals(parking.getName(), parkingReceived.getName());

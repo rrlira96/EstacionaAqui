@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ParkingRepository extends JpaRepository<Parking, Integer> {
 
-    @Query(value = "SELECT * FROM estacionamento WHERE email_dono = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM parking WHERE owner_email = ?1", nativeQuery = true)
     List<Parking> findAllByOwnerEmail(String ownerEmail);
 }

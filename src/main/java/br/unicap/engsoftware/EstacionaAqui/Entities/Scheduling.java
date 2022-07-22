@@ -5,7 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-@Table(name = "agendamento")
+@Table(name = "scheduling")
 public class Scheduling {
 
     @Id
@@ -17,22 +17,22 @@ public class Scheduling {
     @NotNull
     private String email;
 
-    @JoinColumn(name = "id_estacionamento", referencedColumnName = "id")
+    @JoinColumn(name = "parking_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Parking parking;
 
-    @Column(name = "data_reserva")
+    @Column(name = "scheduling_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date bookingDate;
+    private Date schedulingDate;
 
     public Scheduling() {
     }
 
-    public Scheduling(int id, String email, Parking parking, Date bookingDate) {
+    public Scheduling(int id, String email, Parking parking, Date schedulingDate) {
         this.id = id;
         this.email = email;
         this.parking = parking;
-        this.bookingDate = bookingDate;
+        this.schedulingDate = schedulingDate;
     }
 
     public int getId() {
@@ -59,11 +59,11 @@ public class Scheduling {
         this.parking = parking;
     }
 
-    public Date getBookingDate() {
-        return bookingDate;
+    public Date getSchedulingDate() {
+        return schedulingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
-        this.bookingDate = bookingDate;
+    public void setSchedulingDate(Date schedulingDate) {
+        this.schedulingDate = schedulingDate;
     }
 }

@@ -41,7 +41,9 @@ public class SchedulingService {
             Optional<Parking> parking = parkingRepository.findById(scheduling.getParking().getId());
             if (parking.isPresent()) {
                 try {
-                    parking.get().setParkingSpotQuantity(parking.get().getParkingSpotQuantity() - 1);
+                    parking.get().setAvailableParkingSpots(parking.get().getAvailableParkingSpots() - 1);
+                    parkingRepository.save(parking.get());
+                    scheduling.setParking(parking.get());
                     return schedulingRepository.save(scheduling);
                 } catch (TransactionSystemException e) {
                     throw new FullParkingLotException();
@@ -63,7 +65,7 @@ public class SchedulingService {
     }
 
     private void freeParkingSpot(Parking parking) {
-        parking.setParkingSpotQuantity(parking.getParkingSpotQuantity() + 1);
+        parking.setAvailableParkingSpots(parking.getAvailableParkingSpots() + 1);
         parkingRepository.save(parking);
     }
 
@@ -78,7 +80,7 @@ public class SchedulingService {
     private Scheduling updateData(Scheduling scheduling, Scheduling newScheduling) {
         scheduling.setEmail(newScheduling.getEmail());
         scheduling.setParking(newScheduling.getParking());
-        scheduling.setBookingDate(newScheduling.getBookingDate());
+        scheduling.setSchedulingDate(newScheduling.getSchedulingDate());
         return schedulingRepository.save(scheduling);
     }
 }

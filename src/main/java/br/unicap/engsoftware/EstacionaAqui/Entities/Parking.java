@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "estacionamento")
+@Table(name = "parking")
 public class Parking {
 
     @Id
@@ -13,26 +13,26 @@ public class Parking {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "cep")
+    @Column(name = "zip_code")
     @NotNull
-    private String cep;
+    private String zipCode;
 
-    @Column(name = "nome")
+    @Column(name = "name")
     @NotNull
     private String name;
 
-    @Column(name = "qtd_vagas_disponiveis")
+    @Column(name = "available_parking_spots")
     @Min(value = 0, message = "Parking spot quantity must not be less than 0")
-    private int parkingSpotQuantity;
+    private int availableParkingSpots;
 
-    @Column(name = "qtd_vagas_total")
+    @Column(name = "parking_spot_quantity")
     @Min(value = 0, message = "Total parking spot quantity must not be less than 0")
     private int totalParkingSpot;
 
-    @Column(name = "telefone")
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name = "email_dono")
+    @Column(name = "owner_email")
     @NotNull
     private String ownerEmail;
 
@@ -42,18 +42,18 @@ public class Parking {
     @Column(name = "longitude")
     private String longitude;
 
-    @Column(name = "endereco")
+    @Column(name = "address")
     private String address;
 
 
     public Parking() {
     }
 
-    public Parking(int id, String cep, String name, int parkingSpotQuantity, int totalParkingSpot, String phone, String ownerEmail, String latitude, String longitude, String address) {
+    public Parking(int id, String zipCode, String name, int availableParkingSpots, int totalParkingSpot, String phone, String ownerEmail, String latitude, String longitude, String address) {
         this.id = id;
-        this.cep = cep;
+        this.zipCode = zipCode;
         this.name = name;
-        this.parkingSpotQuantity = parkingSpotQuantity;
+        this.availableParkingSpots = availableParkingSpots;
         this.totalParkingSpot = totalParkingSpot;
         this.phone = phone;
         this.ownerEmail = ownerEmail;
@@ -70,12 +70,12 @@ public class Parking {
         this.id = id;
     }
 
-    public String getCep() {
-        return cep;
+    public String getZipCode() {
+        return zipCode;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getName() {
@@ -86,12 +86,12 @@ public class Parking {
         this.name = name;
     }
 
-    public int getParkingSpotQuantity() {
-        return parkingSpotQuantity;
+    public int getAvailableParkingSpots() {
+        return availableParkingSpots;
     }
 
-    public void setParkingSpotQuantity(int parkingSpotQuantity) {
-        this.parkingSpotQuantity = parkingSpotQuantity;
+    public void setAvailableParkingSpots(int availableParkingSpots) {
+        this.availableParkingSpots = availableParkingSpots;
     }
 
     public int getTotalParkingSpot() {
