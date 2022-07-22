@@ -11,7 +11,7 @@ It has 2 entities
 
 It is hosted in a Heroku application.
 
-The develop branch it is the local/test environment, while the master its the production env that is hosted on Heroku.
+The develop branch it is the local/test environment, while the master is the production env that is hosted on Heroku.
 
 ## To run the app
 
