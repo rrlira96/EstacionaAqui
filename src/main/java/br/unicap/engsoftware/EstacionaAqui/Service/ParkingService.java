@@ -25,14 +25,13 @@ public class ParkingService {
         return parkingRepository.findAllByOwnerEmail(ownerEmail);
     }
 
-
     public Parking getParkingById(int id) {
         Optional<Parking> parking = parkingRepository.findById(id);
         return parking.orElseThrow(() -> new ResourceNotFoundException(String.valueOf(id)));
     }
 
     public Parking createParking(Parking parking) {
-        if (parking.getParkingSpotQuantity() <= parking.getTotalParkingSpot()) {
+        if (parking.getAvailableParkingSpots() <= parking.getTotalParkingSpot()) {
             if (!parkingRepository.existsById(parking.getId())) {
                 return parkingRepository.save(parking);
             }
@@ -59,9 +58,9 @@ public class ParkingService {
 
     private Parking updateData(Parking parking, Parking newParking) {
         parking.setOwnerEmail(newParking.getOwnerEmail());
-        parking.setCep(newParking.getCep());
+        parking.setZipCode(newParking.getZipCode());
         parking.setName(newParking.getName());
-        parking.setParkingSpotQuantity(newParking.getParkingSpotQuantity());
+        parking.setAvailableParkingSpots(newParking.getAvailableParkingSpots());
         parking.setTotalParkingSpot(newParking.getTotalParkingSpot());
         parking.setPhone(newParking.getPhone());
         parking.setLatitude(newParking.getLatitude());

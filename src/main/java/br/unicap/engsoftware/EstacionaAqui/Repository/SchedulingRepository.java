@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface SchedulingRepository extends JpaRepository<Scheduling, Integer> {
 
-    @Query(value = "SELECT * FROM agendamento WHERE email = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM scheduling WHERE email = ?1", nativeQuery = true)
     List<Scheduling> findAllByEmail(String email);
 
 }
